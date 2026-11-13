@@ -1,0 +1,30 @@
+---
+import '../styles.css';
+interface Props { title: string; description: string; path?: string }
+const { title, description, path = '/' } = Astro.props;
+const url = new URL(path, Astro.site).href;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0b0f0e" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="canonical" href={url} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={url} />
+  </head>
+  <body class="bg-white text-zinc-800 dark:bg-[#0b0f0e] dark:text-zinc-200 antialiased relative">
+    <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="fx" aria-hidden="true"><div class="fx-spot"></div><div class="fx-grain"></div></div>
+    <slot />
+    <script is:inline>(()=>{const m=matchMedia;if(!m("(hover:hover) and (pointer:fine)").matches)return;const s=document.documentElement.style;let e,f;addEventListener("pointermove",v=>{e=v;f||(f=requestAnimationFrame(()=>{f=0;s.setProperty("--mx",e.clientX+"px");s.setProperty("--my",e.clientY+"px");const t=e.target,c=t.closest&&t.closest(".card");if(c){const b=c.getBoundingClientRect();c.style.setProperty("--cx",e.clientX-b.left+"px");c.style.setProperty("--cy",e.clientY-b.top+"px")}}))},{passive:true})})()</script>
+  </body>
+</html>
