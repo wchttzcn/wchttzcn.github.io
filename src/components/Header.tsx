@@ -12,7 +12,7 @@ export default function Header() {
           <a href="#work" className={`hidden sm:inline ${link}`}>Work</a>
           <a href="#side-projects" className={`hidden sm:inline ${link}`}>Side projects</a>
           <a href="#contact" className={`hidden sm:inline ${link}`}>Contact</a>
-          <a href={profile.cv} download className={link}>CV</a>
+          <a href={profile.cv} target="_blank" rel="noopener" className={link}>Resume</a>
         </nav>
       </div>
     </header>

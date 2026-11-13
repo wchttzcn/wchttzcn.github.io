@@ -1,6 +1,6 @@
 import { profile } from '../data/profile';
 import type { CSSProperties } from 'react';
-import { DownloadIcon } from './icons';
+import { ExternalIcon } from './icons';
 
 const lines: { prompt: boolean; text: string }[] = [
   { prompt: true, text: 'whoami' },
@@ -51,10 +51,11 @@ export default function Hero() {
           <div className="mt-8 flex flex-wrap gap-3">
             <a
               href={profile.cv}
-              download
+              target="_blank"
+              rel="noopener"
               className="btn-primary relative inline-flex items-center gap-2 overflow-hidden rounded-md bg-accent-fg px-4 py-2 font-medium text-white hover:bg-[#145f4d] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent dark:bg-accent dark:text-zinc-950 dark:hover:bg-accent-fg-dark"
             >
-              Download CV <DownloadIcon />
+              Resume <ExternalIcon />
             </a>
             <a
               href={`mailto:${profile.email}`}
